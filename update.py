@@ -4,7 +4,7 @@ import sys
 
 def check_for_update():
     # URL of the raw Python script on GitHub
-    url = 'https://github.com/akhilrathore86/Updi_programmer/blob/main/update.py'
+    url = 'https://raw.githubusercontent.com/akhilrathore86/Updi_programmer/main/update.py'
     
     try:
         response = requests.get(url)
