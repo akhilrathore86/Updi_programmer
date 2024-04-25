@@ -48,3 +48,4 @@ if __name__ == "__main__":
             print("No updates available.")
     else:
         print("Failed to check for updates. Please check your internet connection.")
+    print("hello")
