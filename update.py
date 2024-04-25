@@ -1,14 +1,6 @@
 import requests
 import os
 import sys
-import hashlib
-
-def get_current_code():
-    with open(sys.argv[0], 'r') as file:
-        return file.read()
-
-def get_code_hash(code):
-    return hashlib.sha256(code.encode()).hexdigest()
 
 def check_for_update():
     # URL of the raw Python script on GitHub
@@ -33,18 +25,11 @@ def update_script(new_code):
 
 if __name__ == "__main__":
     print("Checking for updates...")
-    current_code = get_current_code()
-    current_hash = get_code_hash(current_code)
-    
     new_code = check_for_update()
     if new_code:
-        new_hash = get_code_hash(new_code)
-        if new_hash != current_hash:
-            print("Update available. Updating...")
-            update_script(new_code)
-            print("Update successful. Restarting...")
-            os.execv(sys.executable, [sys.executable] + sys.argv)
-        else:
-            print("No updates available.")
+        print("Update available. Updating...")
+        update_script(new_code)
+        print("Update successful. Restarting...")
+        os.execv(sys.executable, [sys.executable] + sys.argv)
     else:
-        print("Failed to check for updates. Please check your internet connection.")
+        print("No updates available.")
